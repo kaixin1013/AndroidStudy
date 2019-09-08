@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--登录界面,用LinearLayout-->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/login_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+    <include layout="@layout/tool_bar"/>
     <!--&lt;!&ndash;标题栏&ndash;&gt;-->
     <!--<include layout="@layout/main_title_bar"></include>-->
     <!--显示头像，记得加入id iv_head -->
@@ -25,15 +27,15 @@
         android:layout_marginLeft="35dp"
         android:layout_marginTop="35dp"
         android:layout_marginRight="35dp"
+        android:drawableStart="@drawable/name"
 
-        android:drawableLeft="@drawable/user_name_icon"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:hint="请输入用户名"
         android:paddingLeft="8dp"
         android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint=""
+        android:textColorHint="@android:color/white"
+
         android:textSize="19sp" />
     <!--输入框-->
     <EditText
@@ -43,15 +45,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:drawableLeft="@drawable/psw_icon"
+        android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:hint="请输入密码"
+        android:textColorHint="@android:color/white"
         android:inputType="textPassword"
         android:paddingLeft="8dp"
         android:singleLine="true"
-        android:textColor="#000000"
-        android:textColorHint=""
+
+
         android:textSize="19sp" />
     <!--按钮-->
     <Button
@@ -62,7 +65,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/register_selector"
+        android:background="@android:color/white"
         android:text="登 录"
         android:textColor="@android:color/black"
         android:textSize="19sp"/>
@@ -84,7 +87,7 @@
             android:gravity="center_horizontal"
             android:padding="8dp"
             android:text="立即注册"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="18sp" />
         <!--layout_weight="1" layout_width="0dp"实现均分效果-->
         <TextView
@@ -95,7 +98,7 @@
             android:gravity="center_horizontal"
             android:padding="8dp"
             android:text="找回密码?"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>
