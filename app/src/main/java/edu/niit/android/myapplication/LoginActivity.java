@@ -2,7 +2,8 @@ package edu.niit.android.myapplication;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBar;
+import android.support.annotation.Nullable;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -52,6 +53,31 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void saveLoginStatus(String username,boolean isLogin){
+        getSharedPreferences("userInfo",MODE_PRIVATE)
+                .edit()
+                .putString("LoginUser",username)
+                .putBoolean("isLogin",isLogin)
+                .apply();
+    }
+    private String readPwd(String username){
+        SharedPreferences sp=getSharedPreferences("userInfo",MODE_PRIVATE);
+        return sp.getString(username,"");
+    }
+@Override
+    protected  void  onActivityResult(int requestCode,
+                                      int resultCode,
+                                      @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode==1&& requestCode==RESULT_OK&& data!=null){
+            String username=data.getStringExtra("username");
+        if (!TextUtils.isEmpty(username)){
+                userName.setText(username);
+                userName.setSelection(username.length());
+
+            }
+        }
+}
 //    private void initToolbar() {
 //        Toolbar toolbar=findViewById(R.id.title_toolbar);
 //        toolbar.setTitle("登录");
@@ -64,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                LoginActivity.this.finish();
+//                                        LoginActivity.this.finish();
 //            }
 //        });
     //   }

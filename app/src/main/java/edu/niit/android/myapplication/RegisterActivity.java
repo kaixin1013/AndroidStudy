@@ -54,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
                     intent.putExtra("username", username);
                     //启动
                     startActivity(intent);
+                    setResult(RESULT_OK,intent);
+                    finish();
                 }
             }
         });
@@ -89,5 +91,11 @@ public class RegisterActivity extends AppCompatActivity {
         etPaaword = findViewById(R.id.et_psw);
         etPwdAgain = findViewById(R.id.et_psw_again);
         btnRegister = findViewById(R.id.btn_register);
+    }
+    private boolean isExist(String username){
+
+        SharedPreferences sp=getSharedPreferences("userInfo",MODE_PRIVATE);
+        String pwd=sp.getString(username,"");
+        return !TextUtils.isEmpty(pwd);
     }
 }
