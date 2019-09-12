@@ -17,20 +17,12 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="windowNoTitle">true</item>
-        <!-- 设置工具栏标题等的颜色-->
+        <!-- 设置工具栏控件的颜色-->
         <item name="colorControlNormal">@android:color/white</item>
-        <!-- 设置工具栏沉浸式状态-->
-        <item name="android:windowTranslucentStatus">true</item>
 
-        <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <!-- 设置工具栏标题颜色-->
-    <!--    <style name="toolbar.style" parent="ThemeOverlay.AppCompat.ActionBar">-->
-    <!--        <item name="android:textColorPrimary">@android:color/white</item>-->
-    <!--    </style>-->
 
-    <!-- 底部菜单按钮的样式 -->
     <style name="TabMenuItem">
         <item name="android:button">@null</item>
         <item name="android:layout_weight">1</item>
