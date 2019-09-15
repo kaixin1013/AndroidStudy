@@ -13,11 +13,11 @@
         android:layout_marginRight="35dp"
         android:layout_marginTop="35dp"
         android:background="@drawable/widget_up_bg"
-        android:drawableStart="@mipmap/ic_password"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
         android:hint="请输入原始密码"
         android:inputType="textPassword"
+        android:drawableStart="@drawable/password"
         android:paddingStart="8dp"
         android:textColor="#000000"
         android:textColorHint="#a3a3a3"
@@ -30,7 +30,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/widget_down_bg"
-        android:drawableStart="@mipmap/ic_password"
+        android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
         android:hint="请输入新密码"
         android:inputType="textPassword"
@@ -47,7 +47,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:background="@drawable/widget_down_bg"
-        android:drawableStart="@mipmap/ic_password"
+        android:drawableStart="@drawable/password"
         android:drawablePadding="10dp"
         android:hint="请再次输入新密码"
         android:inputType="textPassword"
@@ -69,4 +69,4 @@
         android:text="保存"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
-</LinearLayout>>
+</LinearLayout>
