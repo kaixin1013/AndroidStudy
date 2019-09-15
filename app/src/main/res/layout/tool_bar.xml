@@ -9,7 +9,8 @@
     android:clipToPadding="true"
     android:fitsSystemWindows="true"
     android:minHeight="?attr/actionBarSize"
+
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:titleTextColor="@android:color/white">
+    app:titleTextColor="@android:color/black">
 
 </androidx.appcompat.widget.Toolbar>
