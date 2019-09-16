@@ -1,4 +1,4 @@
-package edu.niit.android.myapplication;
+package edu.niit.android.myapplication.fragment;
 
 
 import android.app.Activity;
@@ -15,6 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.niit.android.myapplication.R;
+import edu.niit.android.myapplication.activity.LoginActivity;
+import edu.niit.android.myapplication.activity.SettingActivity;
 
 
 public class MySettingFragment extends Fragment {

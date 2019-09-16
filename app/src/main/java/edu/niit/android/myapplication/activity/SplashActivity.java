@@ -1,4 +1,4 @@
-package edu.niit.android.myapplication;
+package edu.niit.android.myapplication.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import edu.niit.android.myapplication.R;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView tvVersion;//控件对象

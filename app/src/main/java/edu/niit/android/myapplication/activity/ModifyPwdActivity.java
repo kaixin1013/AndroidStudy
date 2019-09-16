@@ -1,4 +1,4 @@
-package edu.niit.android.myapplication;
+package edu.niit.android.myapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import edu.niit.android.myapplication.R;
 import edu.niit.android.myapplication.utils.MD5Utils;
 import edu.niit.android.myapplication.utils.SharedUtils;
 import edu.niit.android.myapplication.utils.StatusUtils;

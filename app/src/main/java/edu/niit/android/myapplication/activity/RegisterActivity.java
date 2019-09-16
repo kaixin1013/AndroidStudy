@@ -1,4 +1,4 @@
-package edu.niit.android.myapplication;
+package edu.niit.android.myapplication.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-
+import edu.niit.android.myapplication.R;
 import edu.niit.android.myapplication.utils.MD5Utils;
 
 public class RegisterActivity extends AppCompatActivity {

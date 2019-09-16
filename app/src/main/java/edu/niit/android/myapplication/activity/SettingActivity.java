@@ -1,8 +1,9 @@
-package edu.niit.android.myapplication;
+package edu.niit.android.myapplication.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import edu.niit.android.myapplication.R;
 import edu.niit.android.myapplication.utils.StatusUtils;
 
 

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/login_bg"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".activity.RegisterActivity">
     <include layout="@layout/tool_bar"/>
     <!--&lt;!&ndash;标题栏&ndash;&gt;-->
     <!--<include layout="@layout/main_title_bar"></include>-->
