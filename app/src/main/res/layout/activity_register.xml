@@ -55,7 +55,7 @@
 
         android:textSize="19sp"/>
     <EditText
-        android:id="@+id/et_psw_again"
+        android:id="@+id/et_pwd_again"
         android:layout_width="fill_parent"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"

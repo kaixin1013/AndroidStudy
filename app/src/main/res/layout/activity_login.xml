@@ -20,7 +20,7 @@
         android:background="@drawable/default_icon"/>
     <!--输入框-->
     <EditText
-        android:id="@+id/et_user_name"
+        android:id="@+id/et_username"
         android:layout_width="338dp"
         android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
@@ -39,7 +39,7 @@
         android:textSize="19sp" />
     <!--输入框-->
     <EditText
-        android:id="@+id/et_psw"
+        android:id="@+id/et_password"
         android:layout_width="338dp"
         android:layout_height="59dp"
         android:layout_gravity="center_horizontal"
@@ -91,13 +91,13 @@
             android:textSize="18sp" />
         <!--layout_weight="1" layout_width="0dp"实现均分效果-->
         <TextView
-            android:id="@+id/tv_find_psw"
+            android:id="@+id/tv_forget"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:padding="8dp"
-            android:text="找回密码?"
+            android:text="忘记密码?"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>

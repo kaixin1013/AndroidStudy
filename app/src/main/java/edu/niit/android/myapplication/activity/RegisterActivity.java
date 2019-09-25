@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void initView() {
         etUsername = findViewById(R.id.et_user_name);
         etPaaword = findViewById(R.id.et_psw);
-        etPwdAgain = findViewById(R.id.et_psw_again);
+        etPwdAgain = findViewById(R.id.et_pwd_again);
         btnRegister = findViewById(R.id.btn_register);
     }
     private boolean isExist(String username){

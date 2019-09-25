@@ -1,109 +1,145 @@
 package edu.niit.android.myapplication.fragment;
 
+import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.niit.android.myapplication.R;
+import edu.niit.android.myapplication.activity.LoginActivity;
+import edu.niit.android.myapplication.activity.SettingActivity;
+import edu.niit.android.myapplication.activity.UserInfoActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MyInfoFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MyInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MyInfoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private Context mContext;
+    private TextView tvUsername;
+    private LinearLayout headLayout;
+    private RelativeLayout historyLayout, settingLayout;
+    private boolean isLogin;  // 是否登录的标志位
 
     public MyInfoFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MyInfoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MyInfoFragment newInstance(String param1, String param2) {
-        MyInfoFragment fragment = new MyInfoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static MyInfoFragment newInstance() {
+        return new MyInfoFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // 1. 获取fragment的父Activity，以及目前的登录状态
+        this.mContext = getContext();
+        this.isLogin = checkLoginStatus();
+
+        // 2. 获取fragment界面上需要处理的控件对象
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_info, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_my_info, container, false);
+        tvUsername = view.findViewById(R.id.tv_username);
+        setUsername(isLogin);  // 根据登录状态修改用户文本框的内容
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        headLayout = view.findViewById(R.id.ll_head);
+        historyLayout = view.findViewById(R.id.rl_history);
+        settingLayout = view.findViewById(R.id.rl_setting);
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+        // 3. 设置事件监听器
+        headLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLogin) {
+                    Intent intent = new Intent(mContext, UserInfoActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(mContext, LoginActivity.class);
+                    startActivityForResult(intent, 1);
+                }
+            }
+        });
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+        // 播放历史布局的点击事件监听
+        historyLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLogin) {
+
+                } else {
+                    Toast.makeText(mContext, "请先登录", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // 设置布局的点击事件监听
+        settingLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isLogin) {
+                    Intent intent = new Intent(mContext, SettingActivity.class);
+                    startActivityForResult(intent, 1);
+                } else {
+                    Toast.makeText(mContext, "请先登录", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        return view;
     }
 
     /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
+     * 登录返回的回调处理
+     *
+     * @param requestCode：请求码
+     * @param resultCode：登录页面返回的结果码
+     * @param data：登录页面返回的数据
      */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
+            isLogin = data.getBooleanExtra("isLogin", false);
+            setUsername(isLogin);
+        }
     }
+
+    /**
+     * 根据登录状态设置用户名
+     *
+     * @param isLogin 是否登录的布尔值
+     */
+    private void setUsername(boolean isLogin) {
+        if (isLogin) {
+            tvUsername.setText(readLoginInfo());
+        } else {
+            tvUsername.setText("点击登录");
+        }
+    }
+
+    /**
+     * 获取登录状态
+     */
+    private boolean checkLoginStatus() {
+        SharedPreferences sp = mContext.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        return sp.getBoolean("isLogin", false);
+    }
+
+    /**
+     * 读取登录用户名
+     *
+     * @return
+     */
+    private String readLoginInfo() {
+        SharedPreferences sp = mContext.getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        return sp.getString("loginUser", "");
+    }
+
+
 }
