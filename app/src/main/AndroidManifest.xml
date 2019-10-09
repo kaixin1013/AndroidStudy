@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
-        <activity android:name=".activity.ChangeUserInfoActivity"></activity>
+        <activity android:name=".activity.MainViewPagerActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/indicator_on" />
+
+        <activity android:name=".activity.ExerciseDetailActivity" />
+        <activity android:name=".activity.ChangeUserInfoActivity" />
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.ModifyPwdActivity" />
         <activity android:name=".activity.FindPwdActivity" />
