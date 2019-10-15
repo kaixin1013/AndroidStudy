@@ -1,6 +1,8 @@
 package edu.niit.android.myapplication.activity;
 
 
+
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import java.util.Arrays;
 import java.util.List;
