@@ -1,16 +1,11 @@
 package edu.niit.android.myapplication.activity;
 
-
-
-
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-
 import android.os.Build;
 import android.os.Bundle;
-
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -23,6 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,11 +30,6 @@ import edu.niit.android.myapplication.service.UserInfoServiceImpl;
 import edu.niit.android.myapplication.utils.SharedUtils;
 import edu.niit.android.myapplication.utils.StatusUtils;
 
-
-/**
- * 完成显示个人信息的功能
- * 就完成修改昵称、修改性别和签名的功能
- */
 public class UserInfoActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int MODIFY_NICKNAME = 1;
     private static final int MODIFY_SIGNATURE = 2;
@@ -229,6 +221,16 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         // 2.3 保存到数据库
         service.modify(userInfo);
     }
+    //读取
+//    private UserInfo readPublicExternalStorage() {
+//        UserInfo userInfo = null;
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_DENIED)
+//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                        REQUEST_PERMISSION_READ);
+//        }
+//
+//    }
 
     //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

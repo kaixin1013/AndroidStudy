@@ -69,4 +69,7 @@ public class UserInfo implements Serializable {
     public void setSignature(String signature) {
         this.signature = signature;
     }
+
+    public void save() {
+    }
 }
